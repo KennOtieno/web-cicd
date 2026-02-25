@@ -30,8 +30,8 @@ test('User Logs Out', async({page}) => {
 
     await page.goto('https://the-internet.herokuapp.com/login');
 
-    await page.getByPlaceholder('Username').fill('tomsmith');
-    await page.getByPlaceholder('Password').fill('SuperSecretPassword!');
+    await page.getByLabel('Username').fill('tomsmith');
+    await page.getByLabel('Password').fill('SuperSecretPassword!');
     await page.getByRole('button',{name: 'Login'}).click();
 
     await expect(page).toHaveURL(/secure/);
