@@ -25,3 +25,19 @@ test('Invalid Details', async ({page}) => {
     await expect(page.getByText('Your username is invalid!')).toBeVisible();
 
 });
+
+test('User Logs Out', async({page}) => {
+
+    await page.goto('https://the-internet.herokuapp.com/login');
+
+    await page.getByPlaceholder('Username').fill('tomsmith');
+    await page.getByPlaceholder('Password').fill('SuperSecretPassword!');
+    await page.getByRole('button',{name: 'Login'}).click();
+
+    await expect(page).toHaveURL(/secure/);
+
+    await page.getByRole('button', {name: 'Logout'}).click();
+
+    await expect(page).toHaveURL(/login/);
+
+});
