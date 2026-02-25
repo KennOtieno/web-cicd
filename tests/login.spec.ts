@@ -36,7 +36,7 @@ test('User Logs Out', async({page}) => {
 
     await expect(page).toHaveURL(/secure/);
 
-    await page.getByRole('button', {name: 'Logout'}).click();
+    await page.getByRole('link', {name: 'Logout'}).click();
 
     await expect(page).toHaveURL(/login/);
 
