@@ -9,6 +9,7 @@ test('User Logs In', async ({page}) => {
     await page.getByRole('button', {name: 'Login'}).click();
 
     await expect(page).toHaveURL(/secure/);
+    await expect(page.getByText('You logged into a secure area!')).toBeVisible();
     
 });
 
